@@ -1,18 +1,18 @@
 {
-  "_index-0cmywJOt.js": {
-    "file": "assets/index-0cmywJOt.js",
+  "_index-BtmkWNeS.js": {
+    "file": "assets/index-BtmkWNeS.js",
     "name": "index"
   },
-  "assets/src/admin/main.jsx": {
-    "file": "assets/admin-o16O5hXt.js",
+  "assets/src/admin/main.tsx": {
+    "file": "assets/admin-gDwPoCFg.js",
     "name": "admin",
-    "src": "assets/src/admin/main.jsx",
+    "src": "assets/src/admin/main.tsx",
     "isEntry": true,
     "imports": [
-      "_index-0cmywJOt.js"
+      "_index-BtmkWNeS.js"
     ],
     "css": [
-      "assets/admin-CWA8oUr9.css"
+      "assets/admin-VPQ3C7rH.css"
     ],
     "assets": [
       "assets/geist-cyrillic-wght-normal-CHSlOQsW.woff2",
@@ -20,22 +20,22 @@
       "assets/geist-latin-wght-normal-Dm3htQBi.woff2"
     ]
   },
-  "assets/src/core-ui/main.js": {
+  "assets/src/core-ui/main.ts": {
     "file": "assets/core-ui-l0sNRNKZ.js",
     "name": "core-ui",
-    "src": "assets/src/core-ui/main.js",
+    "src": "assets/src/core-ui/main.ts",
     "isEntry": true
   },
-  "assets/src/frontend/main.jsx": {
-    "file": "assets/frontend-cow52MQI.js",
+  "assets/src/frontend/main.tsx": {
+    "file": "assets/frontend-B9gLtJOb.js",
     "name": "frontend",
-    "src": "assets/src/frontend/main.jsx",
+    "src": "assets/src/frontend/main.tsx",
     "isEntry": true,
     "imports": [
-      "_index-0cmywJOt.js"
+      "_index-BtmkWNeS.js"
     ],
     "css": [
-      "assets/frontend-CUpfl8J3.css"
+      "assets/frontend-BwhX4cRA.css"
     ],
     "assets": [
       "assets/geist-cyrillic-wght-normal-CHSlOQsW.woff2",
@@ -43,13 +43,13 @@
       "assets/geist-latin-wght-normal-Dm3htQBi.woff2"
     ]
   },
-  "assets/src/main.js": {
-    "file": "assets/app-DKl5fgYc.js",
+  "assets/src/main.ts": {
+    "file": "assets/app-u9AQUf0L.js",
     "name": "app",
-    "src": "assets/src/main.js",
+    "src": "assets/src/main.ts",
     "isEntry": true,
     "css": [
-      "assets/app-Cl2QAJBB.css"
+      "assets/app-CAWWE_OG.css"
     ],
     "assets": [
       "assets/geist-cyrillic-wght-normal-CHSlOQsW.woff2",

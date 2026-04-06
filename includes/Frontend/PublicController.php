@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Contrôleur public : shortcode [corbidev_compta] et SPA frontend.
  *
  * Rend un point de montage <div id="corbidev-compta-app">.
- * La SPA React (assets/src/frontend/main.jsx) gère l'intégralité de l'UI.
+ * La SPA React (assets/src/frontend/main.tsx) gère l'intégralité de l'UI.
  */
 
 declare( strict_types=1 );
@@ -40,7 +41,7 @@ class PublicController
 
         $this->enqueueAssets();
 
-        return '<div id="corbidev-compta-app"></div>';
+        return '<div class="corbidev-compta-front-wrap"><div id="corbidev-compta-app"></div></div>';
     }
 
     /**
@@ -58,7 +59,7 @@ class PublicController
             return;
         }
 
-        $entry = $manifest['assets/src/frontend/main.jsx'] ?? null;
+        $entry = $manifest['assets/src/frontend/main.tsx'] ?? null;
 
         if ( $entry === null ) {
             return;
