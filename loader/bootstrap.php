@@ -1,51 +1,58 @@
 <?php
+
 /**
- * Bootstrap du plugin wp-corbidev-compta.
- * Charge l'autoloader, enregistre les hooks d'activation/désactivation,
- * et initialise les contrôleurs.
+ * Bootstrap du theme wp-corbidev-compta-theme.
+ * Charge l'autoloader, initialise les hooks du theme
+ * et garantit la presence du schema de donnees.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-require_once CDCOMPTA_PLUGIN_DIR . 'includes/autoload.php';
+require_once CDCOMPTA_THEME_DIR . 'includes/autoload.php';
 
-use CorbiDev\Compta\Core\Database;
 use CorbiDev\Compta\Admin\AjaxHandler;
+use CorbiDev\Compta\Core\Database;
 use CorbiDev\Compta\Frontend\PublicController;
 
-/**
- * Activation : création des tables pour le site courant.
- */
-register_activation_hook( CDCOMPTA_PLUGIN_FILE, static function (): void {
-    Database::createTables();
-} );
+add_action('after_setup_theme', static function (): void {
+    load_theme_textdomain(CDCOMPTA_TEXT_DOMAIN, CDCOMPTA_THEME_DIR . 'languages');
 
-/**
- * Multisite : création des tables pour chaque nouveau sous-site.
- */
-add_action( 'wpmu_new_blog', static function ( int $blog_id ): void {
-    switch_to_blog( $blog_id );
-    Database::createTables();
-    restore_current_blog();
-} );
-
-/**
- * Initialisation du plugin après le chargement de tous les plugins.
- */
-add_action( 'plugins_loaded', static function (): void {
-    load_plugin_textdomain(
-        CDCOMPTA_TEXT_DOMAIN,
-        false,
-        dirname( plugin_basename( CDCOMPTA_PLUGIN_FILE ) ) . '/languages'
+    add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');
+    add_theme_support(
+        'html5',
+        ['search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script']
     );
+} );
 
-    // Shortcode public [corbidev_compta] (frontend).
+/**
+ * Cree les tables une seule fois par site et les recree en cas d'evolution du schema.
+ */
+add_action('init', static function (): void {
+    $installedSchemaVersion = get_option('cdcompta_schema_version');
+
+    if ($installedSchemaVersion === CDCOMPTA_SCHEMA_VERSION) {
+        return;
+    }
+
+    Database::createTables();
+    update_option('cdcompta_schema_version', CDCOMPTA_SCHEMA_VERSION);
+}, 5);
+
+add_action('init', static function (): void {
+    static $isBootstrapped = false;
+
+    if ($isBootstrapped) {
+        return;
+    }
+
+    $isBootstrapped = true;
+
     $publicController = new PublicController();
     $publicController->init();
 
-    // Handlers AJAX (wp_ajax_* fonctionne aussi bien depuis le frontend que l'admin).
     $ajaxHandler = new AjaxHandler();
     $ajaxHandler->init();
-} );
+}, 20);

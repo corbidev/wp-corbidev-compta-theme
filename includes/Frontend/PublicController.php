@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Contrôleur public : shortcode [corbidev_compta] et SPA frontend.
+ * Controleur public : rendu de la SPA frontend et compatibilite shortcode.
  *
  * Rend un point de montage <div id="corbidev-compta-app">.
- * La SPA React (assets/src/frontend/main.tsx) gère l'intégralité de l'UI.
+ * La SPA React (assets/src/frontend/main.tsx) gere l'integralite de l'UI.
  */
 
 declare( strict_types=1 );
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class PublicController
 {
-    /** Indique si les assets ont déjà été mis en file d'attente. */
+    /** Indique si les assets ont deja ete mis en file d'attente. */
     private bool $assetsEnqueued = false;
 
     /**
@@ -70,7 +70,7 @@ class PublicController
         if ( $js_file !== null ) {
             wp_enqueue_script(
                 'corbidev-compta-frontend',
-                CDCOMPTA_PLUGIN_URL . 'assets/dist/' . $js_file,
+                CDCOMPTA_THEME_URL . 'assets/dist/' . $js_file,
                 [],
                 CDCOMPTA_VERSION,
                 true
@@ -106,7 +106,7 @@ class PublicController
         foreach ( $entry['css'] ?? [] as $css_file ) {
             wp_enqueue_style(
                 'corbidev-compta-frontend',
-                CDCOMPTA_PLUGIN_URL . 'assets/dist/' . $css_file,
+                CDCOMPTA_THEME_URL . 'assets/dist/' . $css_file,
                 [],
                 CDCOMPTA_VERSION
             );
@@ -122,7 +122,7 @@ class PublicController
      */
     private function loadManifest(): ?array
     {
-        $path = CDCOMPTA_PLUGIN_DIR . 'assets/dist/.vite/manifest.json';
+        $path = CDCOMPTA_THEME_DIR . 'assets/dist/.vite/manifest.json';
 
         if ( ! file_exists( $path ) ) {
             return null;

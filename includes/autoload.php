@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 spl_autoload_register( static function ( string $class ): void {
     $prefix   = 'CorbiDev\\Compta\\';
-    $base_dir = CDCOMPTA_PLUGIN_DIR . 'includes/';
+    $base_dir = CDCOMPTA_THEME_DIR . 'includes/';
 
     if ( ! str_starts_with( $class, $prefix ) ) {
         return;
