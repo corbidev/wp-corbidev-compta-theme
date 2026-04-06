@@ -1,0 +1,12 @@
+/* =============================================================================
+   Tailwind CSS — point d'entrée global
+   Préfixe public : corbidev-compta-
+   ============================================================================= */
+
+/* Les @import doivent toujours précéder les directives @tailwind */
+@import "@fontsource-variable/geist";
+@import "./components/base.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

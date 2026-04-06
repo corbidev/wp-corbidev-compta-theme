@@ -1,0 +1,19 @@
+/* =============================================================================
+   Frontend — entrée CSS pour la SPA comptabilité
+   ============================================================================= */
+
+@import "tw-animate-css";
+@import "@fontsource-variable/geist";
+@import "../../styles/components/base.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Isole les styles du plugin du thème WordPress */
+#corbidev-compta-app {
+    font-family: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+    color: #0a0a0a;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
