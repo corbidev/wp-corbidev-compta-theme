@@ -5,6 +5,8 @@
  * récupérer ajaxUrl, nonce et les chaînes i18n.
  */
 
+import { useCallback } from 'react';
+
 export function useAjax() {
     const config = window.cdComptaData ?? {};
 
@@ -15,7 +17,8 @@ export function useAjax() {
      * @param {object} params  Paramètres de filtrage optionnels
      * @returns {Promise<any>} data du JSON WordPress
      */
-    const get = async ( action, params = {} ) => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const get = useCallback(async (action, params = {}) => {
         const url = new URL(
             config.ajaxUrl ?? '/wp-admin/admin-ajax.php',
             window.location.href
@@ -34,7 +37,8 @@ export function useAjax() {
 
         if ( ! json.success ) throw new Error( json.data?.code ?? 'error' );
         return json.data;
-    };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     /**
      * Requête POST (multipart) vers admin-ajax.php — utilisée pour l'import OFX.
@@ -43,7 +47,8 @@ export function useAjax() {
      * @param {FormData} formData Corps de la requête
      * @returns {Promise<any>}
      */
-    const post = async ( action, formData ) => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const post = useCallback(async (action, formData) => {
         formData.append( 'action', action );
         formData.append( 'nonce',  config.nonce ?? '' );
 
@@ -56,7 +61,7 @@ export function useAjax() {
 
         if ( ! json.success ) throw new Error( json.data?.code ?? 'error' );
         return json.data;
-    };
+    }, []);
 
     return { get, post, i18n: config.i18n ?? {} };
 }
