@@ -60,7 +60,7 @@ export function AccountsPage({
 
   return (
     <div className="space-y-4">
-      <Card className="overflow-hidden border-none bg-linear-to-br from-slate-950 via-slate-900 to-slate-800 text-white shadow-xl ring-0">
+      <Card className="overflow-hidden border-none bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white shadow-xl ring-0">
         <CardHeader className="gap-4 px-4 sm:px-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
           <CardTitle className="text-3xl font-semibold tracking-tight">
             Comptabilité
@@ -230,7 +230,7 @@ function MetricCard({
 }) {
   return (
     <div className="rounded-[1.25rem] border border-white/10 bg-white/8 px-3 py-3 backdrop-blur-sm">
-      <div className="mb-3 flex size-10 items-center justify-center rounded-full bg-white/12 text-white">
+      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-white/12 text-white">
         {icon}
       </div>
       <p className="text-sm text-slate-300">{label}</p>

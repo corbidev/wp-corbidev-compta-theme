@@ -54,155 +54,167 @@ function getBadgeVariant(value: number | undefined): 'default' | 'secondary' {
 }
 
 export function ImportDialog({ open, onClose, onSuccess }: ImportDialogProps) {
-    const { post, i18n } = useAjax();
-    const inputRef = useRef<HTMLInputElement>(null);
+  const { post, i18n } = useAjax();
+  const inputRef = useRef<HTMLInputElement>(null);
 
-    const [file, setFile] = useState<File | null>(null);
-    const [loading, setLoading] = useState(false);
-    const [result, setResult] = useState<ImportResultData | null>(null);
-    const [error, setError] = useState<string | null>(null);
+  const [file, setFile] = useState<File | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<ImportResultData | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-    const reset = () => {
-        setFile(null);
-        setResult(null);
-        setError(null);
-        setLoading(false);
-    };
+  const reset = () => {
+    setFile(null);
+    setResult(null);
+    setError(null);
+    setLoading(false);
+  };
 
-    const handleClose = () => {
-        reset();
-        onClose();
-    };
+  const handleClose = () => {
+    reset();
+    onClose();
+  };
 
-    const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setFile(event.target.files?.[0] ?? null);
-        setError(null);
-    };
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setFile(event.target.files?.[0] ?? null);
+    setError(null);
+  };
 
-    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-        if (!file || loading) {
-            return;
-        }
+    if (!file || loading) {
+      return;
+    }
 
-        setLoading(true);
-        setError(null);
+    setLoading(true);
+    setError(null);
 
-        try {
-            const formData = new FormData();
-            formData.append('ofx_file', file);
+    try {
+      const formData = new FormData();
+      formData.append("ofx_file", file);
 
-            const data = await post<ImportResultData>('cdcompta_import_ofx', formData);
-            setResult(data);
-            onSuccess?.();
-        } catch (caughtError) {
-            setError(caughtError instanceof Error ? caughtError.message : 'error');
-        } finally {
-            setLoading(false);
-        }
-    };
+      const data = await post<ImportResultData>(
+        "cdcompta_import_ofx",
+        formData,
+      );
+      setResult(data);
+      onSuccess?.();
+    } catch (caughtError) {
+      setError(caughtError instanceof Error ? caughtError.message : "error");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    return (
-        <Dialog open={open} onOpenChange={(nextOpen) => !nextOpen && handleClose()}>
-            <DialogContent className="max-w-lg rounded-[2rem] p-0 overflow-hidden">
-                <div className="bg-linear-to-br from-slate-950 via-slate-900 to-slate-800 px-6 py-5 text-white">
-                    <DialogHeader>
-                        <DialogTitle>
-                            {result
-                                ? (i18n.importSummary ?? 'Récapitulatif de l\'import')
-                                : (i18n.importFile ?? 'Importer un fichier OFX')}
-                        </DialogTitle>
-                        <DialogDescription className="text-slate-300 sr-only">
-                            {result ? 'Résultats de l\'import' : 'Sélectionnez un fichier .ofx'}
-                        </DialogDescription>
-                    </DialogHeader>
-                </div>
+  return (
+    <Dialog open={open} onOpenChange={(nextOpen) => !nextOpen && handleClose()}>
+      <DialogContent className="max-w-lg rounded-[2rem] p-0 overflow-hidden">
+        <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 px-6 py-5 text-white">
+          <DialogHeader>
+            <DialogTitle>
+              {result
+                ? i18n.importSummary ?? "Récapitulatif de l'import"
+                : i18n.importFile ?? "Importer un fichier OFX"}
+            </DialogTitle>
+            <DialogDescription className="text-slate-300 sr-only">
+              {result
+                ? "Résultats de l'import"
+                : "Sélectionnez un fichier .ofx"}
+            </DialogDescription>
+          </DialogHeader>
+        </div>
 
-                <div className="px-6 py-6">
-                    {!result ? (
-                        <ImportForm
-                            file={file}
-                            loading={loading}
-                            error={error}
-                            inputRef={inputRef}
-                            onFileChange={handleFileChange}
-                            onSubmit={handleSubmit}
-                            onClose={handleClose}
-                            i18n={i18n}
-                        />
-                    ) : (
-                        <ImportResult result={result} i18n={i18n} onClose={handleClose} />
-                    )}
-                </div>
-            </DialogContent>
-        </Dialog>
-    );
+        <div className="px-6 py-6">
+          {!result ? (
+            <ImportForm
+              file={file}
+              loading={loading}
+              error={error}
+              inputRef={inputRef}
+              onFileChange={handleFileChange}
+              onSubmit={handleSubmit}
+              onClose={handleClose}
+              i18n={i18n}
+            />
+          ) : (
+            <ImportResult result={result} i18n={i18n} onClose={handleClose} />
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
 }
 
 function ImportForm({
-    file,
-    loading,
-    error,
-    inputRef,
-    onFileChange,
-    onSubmit,
-    onClose,
-    i18n,
+  file,
+  loading,
+  error,
+  inputRef,
+  onFileChange,
+  onSubmit,
+  onClose,
+  i18n,
 }: ImportFormProps) {
-    return (
-        <form onSubmit={onSubmit} className="flex flex-col gap-5">
-            <button
-                type="button"
-                onClick={() => inputRef.current?.click()}
-                className={cn(
-                    'flex w-full flex-col items-center justify-center gap-3 rounded-[1.75rem] border-2 border-dashed px-6 py-12 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950',
-                    file
-                        ? 'border-emerald-300 bg-emerald-50'
-                        : 'border-slate-200 bg-slate-50 hover:border-slate-300 hover:bg-white',
-                )}
-            >
-                <span className="flex size-14 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-slate-200">
-                    <Upload className="h-7 w-7 text-slate-500" strokeWidth={1.8} />
-                </span>
-                {file ? (
-                    <div className="space-y-1">
-                        <p className="text-sm font-semibold text-slate-900">{file.name}</p>
-                        <p className="text-xs text-slate-500">Prêt pour l'import</p>
-                    </div>
-                ) : (
-                    <div className="space-y-1">
-                        <p className="text-sm font-semibold text-slate-900">
-                            {i18n.selectFile ?? 'Sélectionner un fichier .ofx'}
-                        </p>
-                        <p className="text-xs text-slate-500">Cliquez pour parcourir</p>
-                    </div>
-                )}
-                <input
-                    ref={inputRef}
-                    type="file"
-                    accept=".ofx"
-                    onChange={onFileChange}
-                    className="sr-only"
-                />
-            </button>
+  return (
+    <form onSubmit={onSubmit} className="flex flex-col gap-5">
+      <button
+        type="button"
+        onClick={() => inputRef.current?.click()}
+        className={cn(
+          "flex w-full flex-col items-center justify-center gap-3 rounded-[1.75rem] border-2 border-dashed px-6 py-12 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950",
+          file
+            ? "border-emerald-300 bg-emerald-50"
+            : "border-slate-200 bg-slate-50 hover:border-slate-300 hover:bg-white",
+        )}
+      >
+        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-slate-200">
+          <Upload className="h-7 w-7 text-slate-500" strokeWidth={1.8} />
+        </span>
+        {file ? (
+          <div className="space-y-1">
+            <p className="text-sm font-semibold text-slate-900">{file.name}</p>
+            <p className="text-xs text-slate-500">Prêt pour l'import</p>
+          </div>
+        ) : (
+          <div className="space-y-1">
+            <p className="text-sm font-semibold text-slate-900">
+              {i18n.selectFile ?? "Sélectionner un fichier .ofx"}
+            </p>
+            <p className="text-xs text-slate-500">Cliquez pour parcourir</p>
+          </div>
+        )}
+        <input
+          ref={inputRef}
+          type="file"
+          accept=".ofx"
+          onChange={onFileChange}
+          className="sr-only"
+        />
+      </button>
 
-            {error && (
-                <div className="rounded-3xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-                    {error}
-                </div>
-            )}
+      {error && (
+        <div className="rounded-3xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {error}
+        </div>
+      )}
 
-            <DialogFooter className="pt-2">
-                <Button type="button" variant="outline" onClick={onClose} disabled={loading}>
-                    Annuler
-                </Button>
-                <Button type="submit" disabled={!file || loading}>
-                    {loading ? (i18n.importing ?? 'Import en cours…') : (i18n.import ?? 'Importer')}
-                </Button>
-            </DialogFooter>
-        </form>
-    );
+      <DialogFooter className="pt-2">
+        <Button
+          type="button"
+          variant="outline"
+          onClick={onClose}
+          disabled={loading}
+        >
+          Annuler
+        </Button>
+        <Button type="submit" disabled={!file || loading}>
+          {loading
+            ? i18n.importing ?? "Import en cours…"
+            : i18n.import ?? "Importer"}
+        </Button>
+      </DialogFooter>
+    </form>
+  );
 }
 
 function ImportResult({ result, i18n, onClose }: ImportResultProps) {
