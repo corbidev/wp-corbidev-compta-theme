@@ -1,11 +1,10 @@
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
 export default defineConfig(({ mode }) => ({
 
-  plugins: [vue(), react()],
+  plugins: [react()],
 
   root: '.',
 
@@ -31,10 +30,10 @@ export default defineConfig(({ mode }) => ({
        * 🔥 Entrées
        */
       input: {
-        app:      path.resolve(__dirname, 'assets/src/main.js'),
-        admin:    path.resolve(__dirname, 'assets/src/admin/main.jsx'),
-        'core-ui': path.resolve(__dirname, 'assets/src/core-ui/main.js'),
-        frontend: path.resolve(__dirname, 'assets/src/frontend/main.jsx'),
+        app:       path.resolve(__dirname, 'assets/src/main.ts'),
+        admin:     path.resolve(__dirname, 'assets/src/admin/main.tsx'),
+        'core-ui': path.resolve(__dirname, 'assets/src/core-ui/main.ts'),
+        frontend:  path.resolve(__dirname, 'assets/src/frontend/main.tsx'),
       },
 
       /**

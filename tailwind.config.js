@@ -3,10 +3,9 @@ import tailwindcssAnimate from 'tailwindcss-animate'
 
 export default {
   content: [
-    './admin/**/*.{php}',
-    './public/**/*.{php}',
-    './core-ui/**/*.{php}',
-    './assets/src/**/*.{vue,js,css,jsx}'
+    './admin/**/*.php',
+    './public/**/*.php',
+    './assets/src/**/*.{ts,tsx,js,css}'
   ],
   theme: {
     extend: {
