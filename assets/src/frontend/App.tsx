@@ -40,22 +40,22 @@ export default function App() {
     };
 
     return (
-        <div className="mx-auto max-w-7xl px-4 py-8 text-slate-900 antialiased sm:px-6 lg:px-8">
-            {view === 'accounts' ? (
-                <AccountsPage
-                    accounts={accounts}
-                    loading={accountsLoading}
-                    onViewTransactions={goToTransactions}
-                    onImportSuccess={loadAccounts}
-                />
-            ) : (
-                <TransactionsPage
-                    initialAccount={selectedAccount}
-                    accounts={accounts}
-                    onBack={() => setView('accounts')}
-                    onImportSuccess={loadAccounts}
-                />
-            )}
-        </div>
+      <div className="corbidev-compta-frontend-shell min-w-0 text-slate-900 antialiased">
+        {view === "accounts" ? (
+          <AccountsPage
+            accounts={accounts}
+            loading={accountsLoading}
+            onViewTransactions={goToTransactions}
+            onImportSuccess={loadAccounts}
+          />
+        ) : (
+          <TransactionsPage
+            initialAccount={selectedAccount}
+            accounts={accounts}
+            onBack={() => setView("accounts")}
+            onImportSuccess={loadAccounts}
+          />
+        )}
+      </div>
     );
 }

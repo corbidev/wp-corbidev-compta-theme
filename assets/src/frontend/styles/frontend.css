@@ -11,9 +11,38 @@
 @tailwind utilities;
 
 /* Isole les styles du plugin du thème WordPress */
+.corbidev-compta-front-wrap {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    overflow-x: clip;
+}
 #corbidev-compta-app {
     font-family: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
     color: #0a0a0a;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    width: 100%;
+        max-width: 100%;
+        margin: 0;
+        overflow-x: hidden;
+    }
+    
+    #corbidev-compta-app,
+    #corbidev-compta-app * {
+        box-sizing: border-box;
+    }
+    
+    #corbidev-compta-app .corbidev-compta-frontend-shell {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    @media (min-width: 640px) {
+        #corbidev-compta-app .corbidev-compta-frontend-shell {
+            padding: 0;
+        }
 }

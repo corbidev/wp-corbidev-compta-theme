@@ -41,7 +41,7 @@ class PublicController
 
         $this->enqueueAssets();
 
-        return '<div id="corbidev-compta-app"></div>';
+        return '<div class="corbidev-compta-front-wrap"><div id="corbidev-compta-app"></div></div>';
     }
 
     /**
