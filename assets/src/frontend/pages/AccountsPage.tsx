@@ -10,33 +10,32 @@ import {
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import {
-    Card,
-    CardAction,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card';
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
-    Empty,
-    EmptyContent,
-    EmptyDescription,
-    EmptyHeader,
-    EmptyMedia,
-    EmptyTitle,
-} from '@/components/ui/empty';
-import { Badge } from '@/components/ui/badge';
-import { ImportDialog } from '@frontend/components/ImportDialog';
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty";
+import { Badge } from "@/components/ui/badge";
+import { ImportDialog } from "@frontend/components/ImportDialog";
 
 export interface Account {
-    account_id: string;
-    bank_id?: string | null;
-    branch_id?: string | null;
-    currency?: string | null;
-    transaction_count?: number;
-    date_start?: string | null;
-    date_end?: string | null;
-    last_import?: string | null;
+  account_id: string;
+  bank_id?: string | null;
+  branch_id?: string | null;
+  currency?: string | null;
+  transaction_count?: number | string;
+  date_start?: string | null;
+  date_end?: string | null;
+  last_import?: string | null;
 }
 
 interface AccountsPageProps {
@@ -56,7 +55,7 @@ export function AccountsPage({
 }: AccountsPageProps) {
   const [dialogOpen, setDialogOpen] = useState(startWithImportOpen);
   const totalTransactions = accounts.reduce(
-    (sum, account) => sum + (account.transaction_count ?? 0),
+    (sum, account) => sum + Number(account.transaction_count ?? 0),
     0,
   );
 
@@ -76,7 +75,7 @@ export function AccountsPage({
   return (
     <div className="space-y-4">
       <Card className="overflow-hidden border-none bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white shadow-xl ring-0">
-        <CardHeader className="gap-4 px-4 sm:px-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
+        <CardHeader className="gap-4 px-4 sm:px-5">
           <CardTitle className="text-3xl font-semibold tracking-tight">
             Comptabilité
           </CardTitle>
@@ -84,15 +83,6 @@ export function AccountsPage({
             Consolidez vos comptes et importez vos relevés OFX depuis une
             interface React chargée uniquement par Vite.
           </CardDescription>
-          <CardAction className="col-start-auto row-span-1 row-start-auto justify-self-start lg:justify-self-end">
-            <Button
-              onClick={() => setDialogOpen(true)}
-              className="bg-white text-slate-950 hover:bg-slate-100"
-            >
-              <FileUp className="h-4 w-4" />
-              Importer un fichier OFX
-            </Button>
-          </CardAction>
         </CardHeader>
         <CardContent className="grid gap-3 px-4 pb-4 sm:px-5 md:grid-cols-3 xl:grid-cols-4">
           <MetricCard
