@@ -30,6 +30,20 @@ class Database
     }
 
     /**
+     * Indique si la table des transactions existe reellement en base.
+     */
+    public static function tableExists(): bool
+    {
+        global $wpdb;
+
+        $tableName = self::getTableName();
+        $tableLike = $wpdb->esc_like($tableName);
+        $existing  = $wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $tableLike));
+
+        return $existing === $tableName;
+    }
+
+    /**
      * Crée ou met à jour la table des transactions.
      * Compatible multisite : à appeler dans le contexte du blog courant.
      */

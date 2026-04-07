@@ -94,6 +94,13 @@
         box-sizing: border-box;
     }
 
+                                                                #corbidev-compta-app a,
+                                                                #corbidev-compta-app button,
+                                                                #corbidev-compta-app [role="button"],
+                                                                #corbidev-compta-app input[type="button"],
+                                                                #corbidev-compta-app input[type="submit"] {
+                                                                    cursor: pointer;
+                                                                }
     #corbidev-compta-app .corbidev-compta-frontend-shell {
         width: 100%;
         max-width: 100%;
@@ -101,6 +108,28 @@
         padding: 0;
     }
 
+#corbidev-compta-app [data-slot="card"],
+#corbidev-compta-app [data-slot="dialog-content"],
+#corbidev-compta-app [data-slot="select-content"],
+#corbidev-compta-app [data-slot="popover-content"],
+#corbidev-compta-app [data-slot="command"],
+#corbidev-compta-app [data-slot="combobox-content"] {
+    background-color: #ffffff;
+}
+
+#corbidev-compta-app [data-slot="select-content"],
+#corbidev-compta-app [data-slot="popover-content"],
+#corbidev-compta-app [data-slot="command"],
+#corbidev-compta-app [data-slot="combobox-content"] {
+    backdrop-filter: none;
+}
+
+#corbidev-compta-app [data-slot="select-trigger"],
+#corbidev-compta-app [data-slot="input-group"],
+#corbidev-compta-app input,
+#corbidev-compta-app textarea {
+    background-color: #ffffff;
+}
     @media (min-width: 640px) {
         #corbidev-compta-app .corbidev-compta-frontend-shell {
             padding: 0;

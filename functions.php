@@ -190,10 +190,6 @@ if (! function_exists('cdcompta_render_fallback_menu')) {
 
         if (cdcompta_get_application_page_id() > 0) {
             echo '<li><a href="' . esc_url($appUrl) . '">' . esc_html__('Comptabilite', CDCOMPTA_TEXT_DOMAIN) . '</a></li>';
-
-            if (! cdcompta_has_imported_accounts()) {
-                echo '<li><a href="' . esc_url(cdcompta_get_import_page_url()) . '">' . esc_html__('Charger un OFX', CDCOMPTA_TEXT_DOMAIN) . '</a></li>';
-            }
         }
 
         if ($postsPage > 0) {
