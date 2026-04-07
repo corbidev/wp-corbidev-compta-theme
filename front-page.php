@@ -61,23 +61,23 @@ get_header();
 </section>
 
 <?php if (have_posts()) : ?>
-    <section class="corbidev-compta-theme-page">
-        <div class="corbidev-compta-theme-panel corbidev-compta-theme-shell corbidev-compta-theme-application__header">
-            <?php while (have_posts()) : the_post(); ?>
-                <?php
-                $homeContent = get_the_content();
-                $homeContent = preg_replace('/\[corbidev_compta[^\]]*\]/', '', $homeContent);
-                $homeContent = is_string($homeContent) ? trim($homeContent) : '';
-                ?>
-                <?php if ($homeContent !== '') : ?>
+    <?php while (have_posts()) : the_post(); ?>
+        <?php
+        $homeContent = get_the_content();
+        $homeContent = preg_replace('/\[corbidev_compta[^\]]*\]/', '', $homeContent);
+        $homeContent = is_string($homeContent) ? trim($homeContent) : '';
+        ?>
+        <?php if ($homeContent !== '') : ?>
+            <section class="corbidev-compta-theme-page">
+                <div class="corbidev-compta-theme-panel corbidev-compta-theme-shell corbidev-compta-theme-application__header">
                     <h2><?php the_title(); ?></h2>
                     <div class="corbidev-compta-theme-content">
                         <?php echo apply_filters('the_content', $homeContent); ?>
                     </div>
-                <?php endif; ?>
-            <?php endwhile; ?>
-        </div>
-    </section>
+                </div>
+            </section>
+        <?php endif; ?>
+    <?php endwhile; ?>
 <?php endif; ?>
 <?php
 get_footer();

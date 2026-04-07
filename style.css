@@ -62,6 +62,9 @@ body.corbidev-compta-theme a {
     border-bottom: 1px solid var(--corbidev-compta-theme-line);
 }
 
+body.admin-bar .corbidev-compta-theme-header {
+    top: 32px;
+}
 .corbidev-compta-theme-header__inner,
 .corbidev-compta-theme-footer__inner,
 .corbidev-compta-theme-page,
@@ -75,8 +78,8 @@ body.corbidev-compta-theme a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
-    padding: 0.85rem 0;
+    gap: 1rem;
+        padding: 0.7rem 0;
 }
 
 .corbidev-compta-theme-brand {
@@ -120,6 +123,8 @@ body.corbidev-compta-theme a {
 .corbidev-compta-theme-nav {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+        flex: 1 1 auto;
     gap: 1rem;
 }
 
@@ -155,6 +160,7 @@ body.corbidev-compta-theme a {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: flex-end;
     gap: 0.5rem;
 }
 
@@ -206,7 +212,7 @@ body.corbidev-compta-theme a {
 }
 
 .corbidev-compta-theme-page {
-    padding: 3rem 0 4rem;
+    padding: 2.5rem 0 3.5rem;
 }
 
 .corbidev-compta-theme-panel,
@@ -220,13 +226,14 @@ body.corbidev-compta-theme a {
 
 .corbidev-compta-theme-frontpage__hero {
     display: grid;
-    grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.9fr);
-    gap: 1.5rem;
-    padding: 3rem 0 1.25rem;
+    grid-template-columns: minmax(0, 1.15fr) minmax(17rem, 0.85fr);
+        align-items: start;
+        gap: 1.15rem;
+        padding: 2.25rem 0 1rem;
 }
 
 .corbidev-compta-theme-frontpage__lead {
-    padding: 1.75rem;
+    padding: 1.5rem;
 }
 
 .corbidev-compta-theme-eyebrow {
@@ -245,8 +252,8 @@ body.corbidev-compta-theme a {
 
 .corbidev-compta-theme-frontpage__lead h1,
 .corbidev-compta-theme-page-title {
-    margin: 1rem 0 0;
-    font-size: clamp(2rem, 4vw, 3.8rem);
+    margin: 0.8rem 0 0;
+        font-size: clamp(1.8rem, 3.6vw, 3.2rem);
         line-height: 1.02;
 }
 
@@ -258,25 +265,29 @@ body.corbidev-compta-theme a {
 .corbidev-compta-theme-page-intro,
 .corbidev-compta-theme-copy {
     color: var(--corbidev-compta-theme-muted);
-    font-size: 0.98rem;
-        line-height: 1.68;
+    font-size: 0.94rem;
+        line-height: 1.62;
+    }
+    
+    .corbidev-compta-theme-frontpage__lead p {
+        max-width: 58ch;
 }
 
 .corbidev-compta-theme-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
+    gap: 0.65rem;
+        margin-top: 1.2rem;
 }
 
 .corbidev-compta-theme-frontpage__stats {
     display: grid;
-    gap: 1rem;
-    padding: 1.25rem;
+    gap: 0.85rem;
+        padding: 1rem;
 }
 
 .corbidev-compta-theme-stat {
-    padding: 1rem;
+    padding: 0.9rem 1rem;
     border-radius: 1.25rem;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(245, 240, 230, 0.84));
     border: 1px solid var(--corbidev-compta-theme-line);
@@ -284,20 +295,31 @@ body.corbidev-compta-theme a {
 
 .corbidev-compta-theme-stat strong {
     display: block;
-    font-size: 1.55rem;
+    font-size: 1.35rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    .corbidev-compta-theme-stat span {
+        display: block;
+        color: var(--corbidev-compta-theme-muted);
+        font-size: 0.88rem;
+        line-height: 1.5;
 }
 
 .corbidev-compta-theme-frontpage__sections {
     display: grid;
-    gap: 1.5rem;
+    gap: 1rem;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    padding-bottom: 5rem;
+    padding-bottom: 4rem;
 }
 
 .corbidev-compta-theme-card {
     padding: 1.25rem;
 }
 
+.corbidev-compta-theme-card p {
+    margin-bottom: 0;
+}
 .corbidev-compta-theme-card h2,
 .corbidev-compta-theme-card h3,
 .corbidev-compta-theme-post h2 {
@@ -521,12 +543,21 @@ body.corbidev-compta-theme a {
     .corbidev-compta-theme-nav {
         flex-direction: column;
         align-items: stretch;
+        gap: 0.75rem;
     }
 
     .corbidev-compta-theme-menu {
         justify-content: flex-start;
     }
 
+                .corbidev-compta-theme-nav nav .menu,
+                .corbidev-compta-theme-nav nav .corbidev-compta-theme-menu {
+                    justify-content: flex-start;
+                }
+        
+                .corbidev-compta-theme-button {
+                    width: 100%;
+                }
     .corbidev-compta-theme-footer__inner {
         align-items: flex-start;
     }
@@ -538,9 +569,12 @@ body.corbidev-compta-theme a {
 
 @media (max-width: 640px) {
 
+    body.admin-bar .corbidev-compta-theme-header {
+            top: 46px;
+        }
     .corbidev-compta-theme-page,
     .corbidev-compta-theme-frontpage__hero {
-        padding-top: 2rem;
+        padding-top: 1.5rem;
     }
 
     .corbidev-compta-theme-frontpage__lead,
@@ -548,6 +582,24 @@ body.corbidev-compta-theme a {
     .corbidev-compta-theme-card,
     .corbidev-compta-theme-post,
     .corbidev-compta-theme-application__header {
-        padding: 1.25rem;
+        padding: 1.1rem;
+        }
+        
+        .corbidev-compta-theme-header__inner {
+            gap: 0.75rem;
+            padding: 0.65rem 0;
+        }
+        
+        .corbidev-compta-theme-brand {
+            gap: 0.75rem;
+        }
+        
+        .corbidev-compta-theme-brand__tagline {
+            display: none;
+        }
+        
+        .corbidev-compta-theme-frontpage__lead h1,
+        .corbidev-compta-theme-page-title {
+            font-size: clamp(1.6rem, 7vw, 2.4rem);
     }
 }
