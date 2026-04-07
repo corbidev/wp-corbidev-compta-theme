@@ -40,10 +40,11 @@ export interface Account {
 }
 
 interface AccountsPageProps {
-    accounts: Account[];
-    loading: boolean;
-    onViewTransactions: (accountId: string) => void;
-    onImportSuccess?: () => void;
+  accounts: Account[];
+  loading: boolean;
+  onViewTransactions: (accountId: string) => void;
+  onImportSuccess?: () => void;
+  startWithImportOpen?: boolean;
 }
 
 export function AccountsPage({
@@ -51,12 +52,26 @@ export function AccountsPage({
   loading,
   onViewTransactions,
   onImportSuccess,
+  startWithImportOpen = false,
 }: AccountsPageProps) {
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(startWithImportOpen);
   const totalTransactions = accounts.reduce(
     (sum, account) => sum + (account.transaction_count ?? 0),
     0,
   );
+
+  const closeImportDialog = () => {
+    setDialogOpen(false);
+
+    const url = new URL(window.location.href);
+
+    if (url.searchParams.get("cdcompta-import") !== "1") {
+      return;
+    }
+
+    url.searchParams.delete("cdcompta-import");
+    window.history.replaceState({}, "", url.toString());
+  };
 
   return (
     <div className="space-y-4">
@@ -209,9 +224,9 @@ export function AccountsPage({
 
       <ImportDialog
         open={dialogOpen}
-        onClose={() => setDialogOpen(false)}
+        onClose={closeImportDialog}
         onSuccess={() => {
-          setDialogOpen(false);
+          closeImportDialog();
           onImportSuccess?.();
         }}
       />
