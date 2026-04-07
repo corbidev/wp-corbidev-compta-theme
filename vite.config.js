@@ -7,6 +7,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [react()],
 
   root: '.',
+  base: './',
 
   /**
    * ⚡ Empêche Vite de pré-bundler WP

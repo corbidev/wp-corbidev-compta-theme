@@ -8,11 +8,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $theme = wp_get_theme();
+$themeDirectoryUri = get_stylesheet_directory_uri();
+$themeDirectoryPath = wp_parse_url($themeDirectoryUri, PHP_URL_PATH);
+$siteHomeUrl = home_url('/');
+$siteParts = wp_parse_url($siteHomeUrl);
+
+if (is_string($themeDirectoryPath) && $themeDirectoryPath !== '' && is_array($siteParts)) {
+    $themePublicBaseUrl = (isset($siteParts['scheme']) ? $siteParts['scheme'] . '://' : '')
+        . ($siteParts['host'] ?? '')
+        . (isset($siteParts['port']) ? ':' . $siteParts['port'] : '')
+        . $themeDirectoryPath;
+} else {
+    $themePublicBaseUrl = $themeDirectoryUri;
+}
 
 define( 'CDCOMPTA_VERSION', (string) ( $theme->get( 'Version' ) ?: '1.0.0' ) );
 define( 'CDCOMPTA_SCHEMA_VERSION', '1.0.0' );
 define( 'CDCOMPTA_THEME_DIR', trailingslashit( get_stylesheet_directory() ) );
-define( 'CDCOMPTA_THEME_URL', trailingslashit( get_stylesheet_directory_uri() ) );
+define('CDCOMPTA_THEME_URL', trailingslashit($themePublicBaseUrl));
 define( 'CDCOMPTA_TEXT_DOMAIN', 'corbidevcompta' );
 
 require_once CDCOMPTA_THEME_DIR . 'loader/bootstrap.php';
@@ -41,7 +54,7 @@ add_action('after_setup_theme', static function (): void {
 add_action('wp_enqueue_scripts', static function (): void {
     wp_enqueue_style(
         'corbidev-compta-theme-style',
-        get_stylesheet_uri(),
+        CDCOMPTA_THEME_URL . 'style.css',
         [],
         CDCOMPTA_VERSION
     );

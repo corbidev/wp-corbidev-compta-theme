@@ -4,7 +4,7 @@
     "name": "index"
   },
   "assets/src/admin/main.tsx": {
-    "file": "assets/admin-WzkUyRDV.js",
+    "file": "assets/admin-CU0pGp3j.js",
     "name": "admin",
     "src": "assets/src/admin/main.tsx",
     "isEntry": true,
@@ -12,7 +12,7 @@
       "_index-CIdJ6qwF.js"
     ],
     "css": [
-      "assets/admin-B22YdCK8.css"
+      "assets/admin-BSJ0XSkN.css"
     ],
     "assets": [
       "assets/geist-cyrillic-wght-normal-CHSlOQsW.woff2",
@@ -27,7 +27,7 @@
     "isEntry": true
   },
   "assets/src/frontend/main.tsx": {
-    "file": "assets/frontend-BoeGsTJv.js",
+    "file": "assets/frontend-DNqcOQSu.js",
     "name": "frontend",
     "src": "assets/src/frontend/main.tsx",
     "isEntry": true,
@@ -35,7 +35,7 @@
       "_index-CIdJ6qwF.js"
     ],
     "css": [
-      "assets/frontend-DeCcBd0z.css"
+      "assets/frontend-Uv0IGHnE.css"
     ],
     "assets": [
       "assets/geist-cyrillic-wght-normal-CHSlOQsW.woff2",
@@ -44,12 +44,12 @@
     ]
   },
   "assets/src/main.ts": {
-    "file": "assets/app-eXj9xF6G.js",
+    "file": "assets/app-fAVN5iT3.js",
     "name": "app",
     "src": "assets/src/main.ts",
     "isEntry": true,
     "css": [
-      "assets/app-CmqmMGEM.css"
+      "assets/app-CxeMEg_s.css"
     ],
     "assets": [
       "assets/geist-cyrillic-wght-normal-CHSlOQsW.woff2",

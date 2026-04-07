@@ -2,7 +2,7 @@
 Theme Name: CorbiDev Compta Theme
 Theme URI: https://github.com/CorbiDev/wp-corbidev-compta
 Description: Theme WordPress dedie a la comptabilite bancaire avec import OFX et interface React.
-Version: 1.0.3
+Version: 1.0.4
 Author: CorbiDev
 Author URI: https://github.com/CorbiDev
 Text Domain: corbidevcompta
@@ -66,7 +66,7 @@ body.corbidev-compta-theme a {
     text-decoration: none;
     cursor: pointer;
     }
-    
+
     body.corbidev-compta-theme button,
     body.corbidev-compta-theme input[type="button"],
     body.corbidev-compta-theme input[type="submit"],
@@ -75,7 +75,7 @@ body.corbidev-compta-theme a {
         cursor: pointer;
         font: inherit;
     }
-    
+
     body.corbidev-compta-theme h1,
     body.corbidev-compta-theme h2,
     body.corbidev-compta-theme h3,
@@ -241,7 +241,7 @@ body.admin-bar .corbidev-compta-theme-header {
     box-shadow: var(--corbidev-compta-theme-shadow);
     transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
     }
-    
+
     .corbidev-compta-theme-button:hover,
     .corbidev-compta-theme-button:focus-visible {
         transform: translateY(-1px);
