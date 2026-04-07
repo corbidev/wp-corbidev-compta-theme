@@ -1,18 +1,18 @@
 {
-  "_index-BtmkWNeS.js": {
-    "file": "assets/index-BtmkWNeS.js",
+  "_index-CIdJ6qwF.js": {
+    "file": "assets/index-CIdJ6qwF.js",
     "name": "index"
   },
   "assets/src/admin/main.tsx": {
-    "file": "assets/admin-gDwPoCFg.js",
+    "file": "assets/admin-B12AgRdN.js",
     "name": "admin",
     "src": "assets/src/admin/main.tsx",
     "isEntry": true,
     "imports": [
-      "_index-BtmkWNeS.js"
+      "_index-CIdJ6qwF.js"
     ],
     "css": [
-      "assets/admin-VPQ3C7rH.css"
+      "assets/admin-BkiMk05t.css"
     ],
     "assets": [
       "assets/geist-cyrillic-wght-normal-CHSlOQsW.woff2",
@@ -27,15 +27,15 @@
     "isEntry": true
   },
   "assets/src/frontend/main.tsx": {
-    "file": "assets/frontend-B9gLtJOb.js",
+    "file": "assets/frontend-BxyQ27QP.js",
     "name": "frontend",
     "src": "assets/src/frontend/main.tsx",
     "isEntry": true,
     "imports": [
-      "_index-BtmkWNeS.js"
+      "_index-CIdJ6qwF.js"
     ],
     "css": [
-      "assets/frontend-BwhX4cRA.css"
+      "assets/frontend-baVYZT2u.css"
     ],
     "assets": [
       "assets/geist-cyrillic-wght-normal-CHSlOQsW.woff2",
@@ -44,12 +44,12 @@
     ]
   },
   "assets/src/main.ts": {
-    "file": "assets/app-u9AQUf0L.js",
+    "file": "assets/app-CHnZZ6gV.js",
     "name": "app",
     "src": "assets/src/main.ts",
     "isEntry": true,
     "css": [
-      "assets/app-CAWWE_OG.css"
+      "assets/app-CbnBt7kF.css"
     ],
     "assets": [
       "assets/geist-cyrillic-wght-normal-CHSlOQsW.woff2",

@@ -113,7 +113,7 @@ export function TransactionsPage({
 
   return (
     <div className="space-y-4">
-      <Card className="border-none bg-linear-to-r from-white via-slate-50 to-emerald-50 shadow-sm ring-1 ring-slate-200">
+      <Card className="border-none bg-gradient-to-r from-white via-slate-50 to-emerald-50 shadow-sm ring-1 ring-slate-200">
         <CardHeader className="gap-4 px-4 py-4 sm:px-5">
           <div className="flex flex-col gap-3 xl:flex-row xl:items-end xl:justify-between">
             <div className="flex items-start gap-3">
