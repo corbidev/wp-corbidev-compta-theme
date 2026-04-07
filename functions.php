@@ -153,6 +153,31 @@ if (! function_exists('cdcompta_get_application_page_url')) {
     }
 }
 
+if (! function_exists('cdcompta_has_imported_accounts')) {
+    function cdcompta_has_imported_accounts(): bool
+    {
+        static $hasImportedAccounts = null;
+
+        if ($hasImportedAccounts !== null) {
+            return $hasImportedAccounts;
+        }
+
+        $repository = new \CorbiDev\Compta\Core\TransactionRepository();
+        $accounts   = $repository->getAccounts();
+
+        $hasImportedAccounts = ! empty($accounts);
+
+        return $hasImportedAccounts;
+    }
+}
+
+if (! function_exists('cdcompta_get_import_page_url')) {
+    function cdcompta_get_import_page_url(): string
+    {
+        return add_query_arg('cdcompta-import', '1', cdcompta_get_application_page_url());
+    }
+}
+
 if (! function_exists('cdcompta_render_fallback_menu')) {
     function cdcompta_render_fallback_menu($args): void
     {

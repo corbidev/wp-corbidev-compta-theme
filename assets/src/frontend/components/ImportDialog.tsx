@@ -108,7 +108,7 @@ export function ImportDialog({ open, onClose, onSuccess }: ImportDialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={(nextOpen) => !nextOpen && handleClose()}>
-      <DialogContent className="max-w-lg rounded-[2rem] p-0 overflow-hidden">
+      <DialogContent className="max-w-lg overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-0 shadow-2xl">
         <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 px-6 py-5 text-white">
           <DialogHeader>
             <DialogTitle>
@@ -124,7 +124,7 @@ export function ImportDialog({ open, onClose, onSuccess }: ImportDialogProps) {
           </DialogHeader>
         </div>
 
-        <div className="px-6 py-6">
+        <div className="bg-white px-6 py-6">
           {!result ? (
             <ImportForm
               file={file}

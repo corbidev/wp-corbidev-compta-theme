@@ -33,7 +33,7 @@ add_action('after_setup_theme', static function (): void {
 add_action('init', static function (): void {
     $installedSchemaVersion = get_option('cdcompta_schema_version');
 
-    if ($installedSchemaVersion === CDCOMPTA_SCHEMA_VERSION) {
+    if ($installedSchemaVersion === CDCOMPTA_SCHEMA_VERSION && Database::tableExists()) {
         return;
     }
 
