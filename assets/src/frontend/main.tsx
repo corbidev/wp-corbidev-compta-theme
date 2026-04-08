@@ -1,13 +1,15 @@
-import { createRoot } from 'react-dom/client';
-import App from './App';
-import './styles/frontend.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
 
-document.addEventListener('DOMContentLoaded', () => {
-    const rootElement = document.getElementById('corbidev-compta-app');
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-    if (!rootElement) {
-        return;
-    }
+const queryClient = new QueryClient();
 
-    createRoot(rootElement).render(<App />);
-});
+ReactDOM.createRoot(document.getElementById("corbidev-compta-app")!).render(
+  <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
+  </React.StrictMode>
+);

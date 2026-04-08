@@ -1,21 +1,16 @@
 import { useCallback, useEffect, useState } from 'react';
-
 import { AccountsPage, type Account } from '@frontend/pages/AccountsPage';
-
-/** 🔥 NOUVEL IMPORT */
-import { TransactionsPage } from '@transactions/TransactionsPage';
-
+import { TransactionsPage } from '@frontend/pages/TransactionsPage';
 import { useAjax } from '@frontend/hooks/useAjax';
 
 interface AccountsResponse {
-  accounts?: Account[];
+    accounts?: Account[];
 }
 
 type View = 'accounts' | 'transactions';
 
 export default function App() {
-  const { get } = useAjax();
-
+    const { get } = useAjax();
   const shouldOpenImport =
     new URLSearchParams(window.location.search).get("cdcompta-import") === "1";
 
@@ -58,7 +53,6 @@ export default function App() {
         />
       ) : (
         <TransactionsPage
-          /** 🔥 IMPORTANT : adapter aux nouveaux props */
           initialAccount={selectedAccount}
           accounts={accounts}
           onBack={() => setView("accounts")}
