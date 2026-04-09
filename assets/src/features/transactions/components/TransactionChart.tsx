@@ -25,6 +25,7 @@ export const TransactionChart = ({ data = [] }: any) => {
 
   return (
     <div className="h-64">
+<h2>Chart</h2>
       <ResponsiveContainer>
         <LineChart data={grouped}>
           <XAxis dataKey="date" />

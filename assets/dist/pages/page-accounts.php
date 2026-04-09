@@ -23,7 +23,7 @@ $page_url = get_permalink();
     <h1 class="corbidev-compta-title">
         <?php esc_html_e( 'Comptabilité — Comptes', CDCOMPTA_TEXT_DOMAIN ); ?>
     </h1>
-
+<h2>page-account</h2>
     <div class="corbidev-compta-toolbar">
         <button
             type="button"

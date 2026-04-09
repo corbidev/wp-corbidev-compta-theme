@@ -39,7 +39,7 @@ $total        = $repository->countTransactions( $filters );
     <h1 class="corbidev-compta-title">
         <?php esc_html_e( 'Comptabilité — Transactions', CDCOMPTA_TEXT_DOMAIN ); ?>
     </h1>
-
+<h2>page-transactions</h2>
     <a
         href="<?php echo esc_url( $page_url ); ?>"
         class="corbidev-compta-back-link"
