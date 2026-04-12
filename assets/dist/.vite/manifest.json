@@ -1,64 +1,14 @@
 {
-  "_index-iUCmcBXv.js": {
-    "file": "assets/index-iUCmcBXv.js",
-    "name": "index"
-  },
-  "assets/src/admin/main.tsx": {
-    "file": "assets/admin-ofdVV9dJ.js",
+  "assets/src/app/admin.tsx": {
+    "file": "assets/admin-l0sNRNKZ.js",
     "name": "admin",
-    "src": "assets/src/admin/main.tsx",
-    "isEntry": true,
-    "imports": [
-      "_index-iUCmcBXv.js"
-    ],
-    "css": [
-      "assets/admin-DOpc5BxL.css"
-    ],
-    "assets": [
-      "assets/geist-cyrillic-wght-normal-CHSlOQsW.woff2",
-      "assets/geist-latin-ext-wght-normal-DMtmJ5ZE.woff2",
-      "assets/geist-latin-wght-normal-Dm3htQBi.woff2"
-    ]
-  },
-  "assets/src/core-ui/main.ts": {
-    "file": "assets/core-ui-l0sNRNKZ.js",
-    "name": "core-ui",
-    "src": "assets/src/core-ui/main.ts",
+    "src": "assets/src/app/admin.tsx",
     "isEntry": true
   },
-  "assets/src/frontend/main.tsx": {
-    "file": "assets/frontend-Bk2BDDKH.js",
+  "assets/src/app/frontend.tsx": {
+    "file": "assets/frontend-DsGKrzZU.js",
     "name": "frontend",
-    "src": "assets/src/frontend/main.tsx",
-    "isEntry": true,
-    "imports": [
-      "_index-iUCmcBXv.js"
-    ]
-  },
-  "assets/src/main.ts": {
-    "file": "assets/app-BrRUEndy.js",
-    "name": "app",
-    "src": "assets/src/main.ts",
-    "isEntry": true,
-    "css": [
-      "assets/app-DtX7y6y6.css"
-    ],
-    "assets": [
-      "assets/geist-cyrillic-wght-normal-CHSlOQsW.woff2",
-      "assets/geist-latin-ext-wght-normal-DMtmJ5ZE.woff2",
-      "assets/geist-latin-wght-normal-Dm3htQBi.woff2"
-    ]
-  },
-  "node_modules/@fontsource-variable/geist/files/geist-cyrillic-wght-normal.woff2": {
-    "file": "assets/geist-cyrillic-wght-normal-CHSlOQsW.woff2",
-    "src": "node_modules/@fontsource-variable/geist/files/geist-cyrillic-wght-normal.woff2"
-  },
-  "node_modules/@fontsource-variable/geist/files/geist-latin-ext-wght-normal.woff2": {
-    "file": "assets/geist-latin-ext-wght-normal-DMtmJ5ZE.woff2",
-    "src": "node_modules/@fontsource-variable/geist/files/geist-latin-ext-wght-normal.woff2"
-  },
-  "node_modules/@fontsource-variable/geist/files/geist-latin-wght-normal.woff2": {
-    "file": "assets/geist-latin-wght-normal-Dm3htQBi.woff2",
-    "src": "node_modules/@fontsource-variable/geist/files/geist-latin-wght-normal.woff2"
+    "src": "assets/src/app/frontend.tsx",
+    "isEntry": true
   }
 }

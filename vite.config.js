@@ -11,9 +11,6 @@ export default defineConfig(({ mode }) => {
     root: '.',
     base: './',
 
-    /**
-     * ⚠️ IMPORTANT : ne forcer DEV que si mode=development
-     */
     define: {
       'process.env.NODE_ENV': JSON.stringify(mode),
     },
@@ -29,20 +26,21 @@ export default defineConfig(({ mode }) => {
       emptyOutDir: true,
       manifest: true,
 
-      /**
-       * ✅ Debug en dev build
-       */
       sourcemap: isDev,
       minify: !isDev,
 
       rollupOptions: {
+        /**
+         * 🔥 ENTRÉES CORRIGÉES
+         */
         input: {
-          app: path.resolve(__dirname, 'assets/src/main.ts'),
-          admin: path.resolve(__dirname, 'assets/src/admin/main.tsx'),
-          'core-ui': path.resolve(__dirname, 'assets/src/core-ui/main.ts'),
-          frontend: path.resolve(__dirname, 'assets/src/frontend/main.tsx'),
+          frontend: path.resolve(__dirname, 'assets/src/app/frontend.tsx'),
+          admin: path.resolve(__dirname, 'assets/src/app/admin.tsx'),
         },
 
+        /**
+         * WordPress externals
+         */
         external: (id) => id.startsWith('@wordpress/'),
 
         output: {
@@ -61,17 +59,23 @@ export default defineConfig(({ mode }) => {
 
     resolve: {
       alias: {
+        /**
+         * 🔥 BASE
+         */
         '@': path.resolve(__dirname, 'assets/src'),
-        '@app': path.resolve(__dirname, 'assets/src'),
-        '@utils': path.resolve(__dirname, 'assets/src/utils'),
-        '@styles': path.resolve(__dirname, 'assets/src/styles'),
-        '@core': path.resolve(__dirname, 'assets/src/core'),
-        '@admin': path.resolve(__dirname, 'assets/src/admin'),
-        '@core-ui': path.resolve(__dirname, 'assets/src/core-ui'),
-        '@frontend': path.resolve(__dirname, 'assets/src/frontend'),
-        '@transactions': path.resolve(__dirname, 'assets/src/features/transactions'),
 
-        // Fix lib cassée
+        /**
+         * 🔥 CLEAN aliases
+         */
+        '@app': path.resolve(__dirname, 'assets/src/app'),
+        '@features': path.resolve(__dirname, 'assets/src/features'),
+        '@components': path.resolve(__dirname, 'assets/src/components'),
+        '@shared': path.resolve(__dirname, 'assets/src/shared'),
+        '@styles': path.resolve(__dirname, 'assets/src/styles'),
+
+        /**
+         * 🔧 FIX LIB (ok)
+         */
         'react-remove-scroll-bar/dist/es2015': path.resolve(
           __dirname,
           'node_modules/react-remove-scroll-bar/dist/es5'
